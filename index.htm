@@ -1,0 +1,308 @@
+<html>
+<title>ISS102聖誕party</title>
+<style>
+
+body
+{
+	background: #a90329; /* Old browsers */
+background: -moz-linear-gradient(top,  #a90329 0%, #8f0222 44%, #6d0019 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a90329), color-stop(44%,#8f0222), color-stop(100%,#6d0019)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #a90329 0%,#8f0222 44%,#6d0019 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #a90329 0%,#8f0222 44%,#6d0019 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #a90329 0%,#8f0222 44%,#6d0019 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #a90329 0%,#8f0222 44%,#6d0019 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', endColorstr='#6d0019',GradientType=0 ); /* IE6-9 */
+
+
+}
+img
+{
+	width: 18%;
+}
+#wrap { display:table; 	height: 80%; width: 100%;
+ }
+#cell { display:table-cell; vertical-align:middle; }
+
+.stage
+{
+
+	text-align: center;
+}
+.control
+{
+	position: fixed;
+	text-align: center;
+	width: 100%;
+}
+</style>
+<script type="text/javascript" src="jquery-1.10.2.min.js" ></script>
+    <script type="text/javascript" src="jquery.timer.js"></script>
+    <script type="text/javascript" src="jquery.pietimer.js"></script>
+	
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+
+
+<script type="text/javascript">
+var i=1,count=0,round=-2;
+
+
+var ans = new Array();
+ans[0] = 10;
+ans[1] = 9;
+
+ans[2] = 15;
+ans[3] = 14;
+
+var randomPicFun ;
+
+
+
+$(function() {
+  // Handler for .ready() called.
+
+		$('.boom').hide();
+	
+		$('#demo').pietimer({
+			seconds: 10,
+			color: 'rgba(0, 0, 0, 0.8)',
+			height: 100,
+			width: 100
+		},
+		function(){
+			$('.boom').show('slow');
+		});
+		
+		
+		$('a#pause').click(function(){
+			$('#demo').pietimer('pause');
+			return false;
+		});
+
+
+  
+
+});
+function startpie (argument) {
+	// body...
+	$('.boom').hide();
+			$('#demo').pietimer('start');
+			console.log("XD")
+			return false;
+
+}
+function Go (argument) {
+	randomPicFun = setInterval(randomPic,100);
+
+$("button").prop('disabled', true);
+
+	round++;
+	// body...
+}
+function randomPic (argument) {
+	// body...
+	if(i>20) i = 1;
+
+var nums = [1,2,3,4,5,6,7,8,9,10],
+    ranNums = [],
+    i = nums.length,
+    j = 0;
+
+while (i--) {
+    j = Math.floor(Math.random() * (i+1));
+    ranNums.push(nums[j]);
+    nums.splice(j,1);
+}
+var n1 = ranNums[0]
+var n2 = ranNums[1]
+var n3 = ranNums[2]
+var n4 = ranNums[3]
+var cla1=useroundab();
+var cla2=useroundab();
+var cla3=useroundab();
+var cla4=useroundab();
+	if(count==20) 
+		{
+			$( "#vs" ).animate({
+    width: "+=50",
+  }, 500, function() {
+    // Animation complete.
+    			$( "#vs" ).animate({
+				    width: "-=50",
+				  }, 500, function() {
+				    // Animation complete.
+				  });
+  });
+
+
+			clearInterval(randomPicFun);
+			$("button").prop('disabled', false);
+
+			if(round==0)
+			{
+				cla1='a';
+				cla2='a';
+				cla3='a';
+				cla4='a';
+
+
+				n1 = 10;
+				n2 = 9;
+
+				n3 = 15;
+				n4 = 14;
+
+
+			}
+			if(round==1)
+			{
+				cla1='a';
+				cla2='a';
+				cla3='a';
+				cla4='a';
+				n1 = 12;
+				n2 = 19;
+
+				n3 = 8;
+				n4 = 3;
+
+
+			}			
+			if(round==2)
+			{
+				cla1='a';
+				cla2='a';				
+				cla3='b';
+				cla4='b';
+				n1 = 16;
+				n2 = 13;
+
+				n3 = 18;
+				n4 = 19;
+
+
+			}		
+			count=0;
+		}
+
+
+	$("#pic_left1").attr("src","Iimg/"+cla1+"/"+(n1)+".jpg")
+	$("#pic_left2").attr("src","Iimg/"+cla2+"/"+(n2)+".jpg")
+	$("#pic_right1").attr("src","Iimg/"+cla3+"/"+(n3)+".jpg")
+	$("#pic_right2").attr("src","Iimg/"+cla4+"/"+(n4)+".jpg")
+
+
+
+		count++;
+		console.log(count)
+
+}
+
+function useround(min,max) {
+return Math.round(Math.random()*(max-min)+min);
+}
+function useroundab() {
+var	min=1, max=2;
+A = Math.round(Math.random()*(max-min)+min);
+if(A==1)
+return 'a'
+else
+return 'b'
+}
+
+
+
+function preload(arrayOfImages) {
+    $(arrayOfImages).each(function(){
+        $('<img/>')[0].src = this;
+        // Alternatively you could use:
+        // (new Image()).src = this;
+    });
+}
+
+// Usage:
+
+for (var i = 0; i < 22; i++) {
+	preload([
+	    'Iimg/a/'+i+'.jpg',
+	    'Iimg/b/'+i+'.jpg'
+	]);
+}
+
+
+
+
+</script>
+<div id="wrap">
+    <div id="cell">
+        <div id="content">
+
+<div class="stage">
+<img id="pic_left1" src="Iimg/iss.jpg" class="img-circle" width="20%" />
+<img id="pic_left2" src="Iimg/iss.jpg" class="img-circle" width="20%" />
+<img id="vs" src="Iimg/vs.png" width="100px" />
+<img id="pic_right1" src="Iimg/iss.jpg" class="img-circle" width="20%" />
+<img id="pic_right2" src="Iimg/iss.jpg" class="img-circle" width="20%" />
+</div>
+
+
+<video id="music" width="0" height="0">
+  <source src="music.mp3" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+        </div>
+    </div>
+</div>
+<div class="control ">
+<button type="button" onclick="Go()" class="btn btn-default btn-lg">
+  <span class="glyphicon glyphicon-star"></span> Go!
+</button>
+<br>
+<br>
+<button type="button" onclick="getElementById('music').play()" class="btn btn-default btn-lg ">
+  <span class="glyphicon glyphicon-play"></span>
+<button type="button" onclick="getElementById('music').pause()" class="btn btn-default btn-lg ">
+  <span class="glyphicon glyphicon-pause"></span>
+</button>
+
+<!-- Button trigger modal -->
+<button class="btn btn-primary btn-lg" onclick="startpie()" data-toggle="modal" data-target="#myModal">
+  <span class="glyphicon glyphicon-exclamation-sign"></span>
+</button>
+
+
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Question</h4>
+      </div>
+      <div class="modal-body" style="font-size:300%; text-align:center">
+        雙方打算何時結婚？
+        	<p id="demo" style="height: 150px;"></p>
+						
+	<h3 class="boom">時間到</h3>
+	<p class="boom">The timer finished.</p>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">done</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+</html>
